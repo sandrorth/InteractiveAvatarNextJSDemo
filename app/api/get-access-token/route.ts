@@ -7,6 +7,8 @@ export async function POST() {
     }
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
+    console.debug("HEYGEN_API_KEY: ", HEYGEN_API_KEY);
+    console.debug("process.env.HEYGEN_API_KEY: ", process.env.HEYGEN_API_KEY)
     const res = await fetch(`${baseApiUrl}/v1/streaming.create_token`, {
       method: "POST",
       headers: {
