@@ -192,7 +192,7 @@ export const AvatarConfig: React.FC<AvatarConfigProps> = ({
             />
           </Field>
           <h1 className="text-zinc-100 w-full text-center mt-5">
-            STT Settings
+            Configurações STT
           </h1>
           <Field label="Provedor">
             <Select
