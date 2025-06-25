@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from 'react'
 import {
   AvatarQuality,
   ElevenLabsModel,
@@ -31,6 +31,35 @@ export const AvatarConfig: React.FC<AvatarConfigProps> = ({
     onConfigChange({ ...config, [key]: value });
   };
   const [showMore, setShowMore] = useState<boolean>(false);
+  const [, setLocalConfig] = useState<StartAvatarRequest>(config);
+  const qualitiesAvailable = ["low", "medium", "high"];
+
+  // Read URL parameters
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const search = window.location.search;
+      const params = new URLSearchParams(search);
+
+      const avatarName = params.get("avatarId") || config.avatarName;
+      const language = params.get("lang") || config.language;
+      const knowledgeId = params.get("kbId") || config.knowledgeId;
+      const qualityParam = params.get("quality") as AvatarQuality;
+      const quality = qualitiesAvailable.includes(qualityParam)
+        ? qualityParam
+        : config.quality;
+
+      const newConfig = {
+        ...config,
+        avatarName,
+        language,
+        knowledgeId,
+        quality,
+      };
+
+      setLocalConfig(newConfig);
+      onConfigChange(newConfig);
+    }
+  }, []);
 
   const selectedAvatar = useMemo(() => {
     const avatar = AVATARS.find(
