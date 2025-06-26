@@ -16,11 +16,11 @@ const fontMono = FontMono({
 
 export const metadata: Metadata = {
   title: {
-    default: "HeyGen Interactive Avatar SDK Demo",
-    template: `%s - HeyGen Interactive Avatar SDK Demo`,
+    default: "TribeMD Avatars",
+    template: `%s - TribeMD Avatars`,
   },
   icons: {
-    icon: "/heygen-logo.png",
+    icon: "https://tribemd.com/_image?href=%2F_astro%2Fimg_base_tribe_logo.9SlBSC8C.svg&f=svg",
   },
 };
 
